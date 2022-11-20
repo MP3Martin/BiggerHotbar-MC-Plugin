@@ -35,20 +35,28 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
         plugin.saveConfig()
         plugin.reloadConfig()
     }
-    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<out String>): Boolean {
+    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
         if (sender is Player){
             // --------- \\
             val p : Player = sender
-            
+
+            try {
+                args[0]
+            } catch (e: Throwable) {
+                args.plus("status")
+            }
+
             when (args[0]) {
                 "enable" -> {
                     toggleBiggerHotbar(true)
                     p.sendMessage(formatMessage("§aEnabled§r BiggerHotbar"))
                 }
+
                 "disable" -> {
                     toggleBiggerHotbar(false)
                     p.sendMessage(formatMessage("§cDisabled§r BiggerHotbar"))
                 }
+
                 "toggle" -> {
                     toggleBiggerHotbar()
                     val status = if (plugin.config.getString("bh_enabled") == "true") {
@@ -58,6 +66,7 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
                     }
                     p.sendMessage(formatMessage("$status BiggerHotbar"))
                 }
+
                 "status" -> {
                     val status = if (plugin.config.getString("bh_enabled") == "true") {
                         "§aenabled§r"
@@ -66,10 +75,12 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
                     }
                     p.sendMessage(formatMessage("BiggerHotbar is $status"))
                 }
+
                 "test" -> {
                     p.sendMessage(formatMessage("ok"))
 
                 }
+
                 else -> {
                     return false
                 }
