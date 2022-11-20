@@ -1,0 +1,9 @@
+name: BiggerHotbar
+version: '${project.version}'
+main: xyz.mp3martin.biggerhotbar.biggerhotbar.BiggerHotbar
+api-version: 1.12
+commands:
+  biggerhotbar:
+    aliases: [bh, bhotbar, biggerh]
+    description: Control bigger hotbar plugin
+    usage: /<command> {enable|disable|toggle|status}
