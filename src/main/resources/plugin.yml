@@ -5,4 +5,4 @@ commands:
   biggerhotbar:
     aliases: [bh, bhotbar, biggerh]
     description: Control bigger hotbar plugin
-    usage: /<command> { enable | disable | toggle | status }
+    usage: /<command> { enable | disable | toggle | status | reload }

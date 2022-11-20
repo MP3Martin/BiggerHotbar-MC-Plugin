@@ -35,7 +35,8 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
         plugin.saveConfig()
         plugin.reloadConfig()
     }
-    override fun onCommand(sender: CommandSender, command: Command, label: String, args: Array<String>): Boolean {
+    override fun onCommand(sender: CommandSender, command: Command, label: String, sysargs: Array<out String>): Boolean {
+        var args = sysargs
         if (sender is Player){
             // --------- \\
             val p : Player = sender
@@ -43,7 +44,7 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
             try {
                 args[0]
             } catch (e: Throwable) {
-                args.plus("status")
+                args = arrayOf("status")
             }
 
             when (args[0]) {
@@ -76,9 +77,22 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
                     p.sendMessage(formatMessage("BiggerHotbar is $status"))
                 }
 
-                "test" -> {
-                    p.sendMessage(formatMessage("ok"))
+                "reload" -> {
+                    val success = try {
+                        plugin.reloadConfig()
+                        1
+                    } catch (e: Throwable) {
+                        0
+                    }
+                    if (success == 1) {
+                        p.sendMessage(formatMessage("§aSuccessfully §rreloaded BiggerHotbar"))
+                    } else {
+                        p.sendMessage(formatMessage("§cError when §rreloading BiggerHotbar"))
+                    }
+                }
 
+                "test" -> {
+                    p.sendMessage(formatMessage("§a§lOk"))
                 }
 
                 else -> {
@@ -97,7 +111,7 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
 
     override fun onTabComplete(sender: CommandSender, command: Command, alias: String, args: Array<out String>): MutableList<String>? {
         if (args.size == 1) {
-            return mutableListOf("enable", "disable", "toggle", "status")
+            return mutableListOf("enable", "disable", "toggle", "status", "reload")
         } else if (args.size == 2) {
             return null
         }
