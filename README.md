@@ -27,3 +27,5 @@ This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
   * is **integer**
   * Default value: `4`
   * Controls the limit of how many scrolls can happen at one time (noticeable when using number keys to switch slots)
+  
+> **Note**: Reload config using /bh reload
