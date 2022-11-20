@@ -1,6 +1,11 @@
 name: BiggerHotbar
 version: '${project.version}'
 main: xyz.mp3martin.biggerhotbar.biggerhotbar.BiggerHotbar
+permissions:
+  biggerhotbar.hotbar:
+    description: Enables bigger hotbar
+  biggerhotbar.commands:
+    description: Enables using BiggerHotbar's commands
 commands:
   biggerhotbar:
     aliases: [bh, bhotbar, biggerh]
