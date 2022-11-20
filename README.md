@@ -1,2 +1,2 @@
 # BiggerHotbar-MC-Plugin
- !NOT FINISHED! Plugin that makes your hotbar bigger (using scrolling)
+ !NOT FINISHED! Minecraft plugin that makes your hotbar bigger (using scrolling)
