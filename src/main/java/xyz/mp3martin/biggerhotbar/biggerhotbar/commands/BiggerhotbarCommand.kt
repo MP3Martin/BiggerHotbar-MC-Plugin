@@ -17,19 +17,19 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
     }
 
     private fun toggleBiggerHotbar(value: Boolean? = null) {
-        val fwIsEnabled = plugin.config.getString("bh_enabled")
+        val bhIsEnabled = plugin.config.getBoolean("bh_enabled")
 
         if (value == null) {
-            if (fwIsEnabled == "true") {
+            if (bhIsEnabled) {
                 toggleBiggerHotbar(false)
-            } else if (fwIsEnabled == "false") {
+            } else {
                 toggleBiggerHotbar(true)
             }
         }
         if (value == true) {
-            plugin.config.set("bh_enabled", "true")
+            plugin.config.set("bh_enabled", true)
         } else if (value == false) {
-            plugin.config.set("bh_enabled", "false")
+            plugin.config.set("bh_enabled", false)
         }
 
         plugin.saveConfig()
@@ -60,7 +60,7 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
 
                 "toggle" -> {
                     toggleBiggerHotbar()
-                    val status = if (plugin.config.getString("bh_enabled") == "true") {
+                    val status = if (plugin.config.getBoolean("bh_enabled")) {
                         "§aEnabled§r"
                     } else {
                         "§cDisabled§r"
@@ -69,7 +69,7 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
                 }
 
                 "status" -> {
-                    val status = if (plugin.config.getString("bh_enabled") == "true") {
+                    val status = if (plugin.config.getBoolean("bh_enabled")) {
                         "§aenabled§r"
                     } else {
                         "§cdisabled§r"
