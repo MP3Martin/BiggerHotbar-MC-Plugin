@@ -97,6 +97,10 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
             }
           }
 
+          "version" -> {
+            p.sendMessage(formatMessage("§rPlugin version: §3${plugin.description.version}"))
+          }
+
           "test" -> {
 //          moveItemsHotbarInvSmall(plugin, p, Integer.parseInt(args[1]))
             p.sendMessage(formatMessage("§a§lOk"))
@@ -124,7 +128,7 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
     if (sender.hasPermission("biggerhotbar.commands")) {
       return when (args.size) {
         1 -> {
-          mutableListOf("enable", "disable", "toggle", "status", "reload")
+          mutableListOf("enable", "disable", "toggle", "status", "reload", "version")
         }
         2 -> {
           null

@@ -10,7 +10,7 @@ class BiggerHotbar : JavaPlugin() {
     getCommand("biggerhotbar")!!.executor = BiggerhotbarCommand(this)
     this.server.pluginManager.registerEvents(EventListener(this), this)
 
-    config.addDefault("bh_enabled", true)
+    config.addDefault("bh_enabled", false)
     config.addDefault("maxMovesAtOnce", 4)
     config.options().copyDefaults(true)
     saveConfig()
