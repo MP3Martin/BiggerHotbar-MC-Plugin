@@ -17,3 +17,13 @@ This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
   * Enables using BiggerHotbar's commands
   
 > **Note**: Being OP allows you all of the above
+
+## config.yml
+* `bh_enabled`
+  * is **boolean**
+  * Default value: `false`
+  * Controls if the plugin is doing it's main thing <br><br>
+* `maxMovesAtOnce`
+  * is **integer**
+  * Default value: `4`
+  * Controls the limit of how many scrolls can happen at one time (noticeable when using number keys to switch slots)
