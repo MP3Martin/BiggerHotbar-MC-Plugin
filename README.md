@@ -41,4 +41,4 @@ This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
 <br>
 
 ## Todo
-* Remove command restriction to only player
+* Remove restriction to run commands only as player
