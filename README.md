@@ -26,7 +26,11 @@ This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
 * `maxMovesAtOnce`
   * is **integer**
   * Default value: `4`
-  * Controls the limit of how many scrolls can happen at one time (noticeable when using number keys to switch slots)
+  * Controls the limit of how many scrolls can happen at one time (noticeable when using number keys to switch slots) <br><br>
+* `mode`
+  * is **string**
+  * Default value: `center`
+  * Controls the mode. Available options: `center` and `sides`
   
 > **Note**: Reload config using `/bh reload`
 
