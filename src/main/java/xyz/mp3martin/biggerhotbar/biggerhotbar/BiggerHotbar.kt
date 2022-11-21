@@ -12,6 +12,7 @@ class BiggerHotbar : JavaPlugin() {
 
     config.addDefault("bh_enabled", false)
     config.addDefault("maxMovesAtOnce", 4)
+    config.addDefault("mode", "center")
     config.options().copyDefaults(true)
     saveConfig()
 

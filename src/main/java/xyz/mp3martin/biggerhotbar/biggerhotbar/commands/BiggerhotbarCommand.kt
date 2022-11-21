@@ -7,7 +7,6 @@ import org.bukkit.entity.Player
 import xyz.mp3martin.biggerhotbar.biggerhotbar.BiggerHotbar
 import xyz.mp3martin.biggerhotbar.biggerhotbar.utils.Settings.formatMessage
 import xyz.mp3martin.biggerhotbar.biggerhotbar.utils.centerHotbar
-import xyz.mp3martin.biggerhotbar.biggerhotbar.utils.moveItemsHotbarInvSmall
 
 
 class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
@@ -83,6 +82,32 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
             p.sendMessage(formatMessage("BiggerHotbar is $status"))
           }
 
+          "mode" -> {
+            val mode = plugin.config.getString("mode")
+            try {
+              args[1]
+            } catch (e: Throwable) {
+              args = arrayOf("NOO", "NOO")
+            }
+            if (args[1] == "NOO") {
+              p.sendMessage(formatMessage("Current mode is §3$mode"))
+              p.sendMessage(formatMessage("All available modes are: §3center§r, §3sides"))
+            } else if (args[1].lowercase() == "center") {
+              plugin.config.set("mode", "center")
+              centerHotbar(plugin)
+              p.sendMessage(formatMessage("Successfully changed mode to §3center"))
+              plugin.saveConfig()
+              plugin.reloadConfig()
+            } else if (args[1].lowercase() == "sides") {
+              plugin.config.set("mode", "sides")
+              p.sendMessage(formatMessage("Successfully changed mode to §3sides"))
+              plugin.saveConfig()
+              plugin.reloadConfig()
+            } else {
+              return false
+            }
+          }
+
           "reload" -> {
             val success = try {
               plugin.reloadConfig()
@@ -128,11 +153,17 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
     if (sender.hasPermission("biggerhotbar.commands")) {
       return when (args.size) {
         1 -> {
-          mutableListOf("enable", "disable", "toggle", "status", "reload", "version")
+          mutableListOf("enable", "disable", "toggle", "status", "mode", "reload", "version")
         }
+
         2 -> {
-          null
+          if (args[0] == "mode") {
+            mutableListOf("center", "sides")
+          } else {
+            null
+          }
         }
+
         else -> {
           null
         }

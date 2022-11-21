@@ -28,36 +28,58 @@ class EventListener(plugin: BiggerHotbar) : Listener {
     val oldSlot = event.player.inventory.heldItemSlot
     val bhIsEnabled = plugin.config.getBoolean("bh_enabled")
     val maxMovesAtOnce = plugin.config.getInt("maxMovesAtOnce")
+    val mode = plugin.config.getString("mode")
     if (bhIsEnabled && event.player.hasPermission("biggerhotbar.hotbar")) {
       // - BiggerHotbar is enabled -
       // - Player has permission -
 
-      scheduleSyncDelayedTask(plugin, {
-        val oldSlot = event.player.inventory.heldItemSlot
+      if (mode == "sides") {
+        // - Mode is sides -
+        scheduleSyncDelayedTask(plugin, {
+          val newSlot = event.player.inventory.heldItemSlot
+//          event.player.sendMessage("$oldSlot + $newSlot")
+          val moveLeftOldSlot = (oldSlot == 6 || oldSlot == 7 || oldSlot == 8)
+          val moveRightOldSlot = (oldSlot == 0 || oldSlot == 1 || oldSlot == 2)
+          if ((moveLeftOldSlot && (newSlot == 0 || newSlot == 1 || newSlot == 2)) || (oldSlot == 7 && newSlot == 8) || (oldSlot == 6 && newSlot == 7) || (oldSlot == 6 && newSlot == 8)) {
+            event.player.inventory.heldItemSlot = 6
+            moveItemsHotbarInvSmall(plugin, event.player, 0)
+          } else if ((moveRightOldSlot && (newSlot == 8 || newSlot == 7 || newSlot == 6)) || (oldSlot == 1 && newSlot == 0) || (oldSlot == 2 && newSlot == 1) || (oldSlot == 2 && newSlot == 0)) {
+            event.player.inventory.heldItemSlot = 2
+            moveItemsHotbarInvSmall(plugin, event.player, 1)
+          }
+        }, 1)
+      } else {
+        // - Mode is center -
+        scheduleSyncDelayedTask(plugin, {
+          val oldSlot = event.player.inventory.heldItemSlot
 
-        event.player.inventory.heldItemSlot = 4
+          event.player.inventory.heldItemSlot = 4
 
-        var scrLeft = oldSlot - 4
-        var scrRight = 4 - oldSlot
+          val scrLeft = oldSlot - 4
+          val scrRight = 4 - oldSlot
 
-        if (oldSlot != 4) {
-          if (oldSlot > 4) {
-            for (i in 0..min(scrLeft, maxMovesAtOnce) -1) {
-              moveItemsHotbarInvSmall(plugin, event.player, 0)
-            }
-          } else {
-            for (i in 0..min(scrRight, maxMovesAtOnce) -1) {
-              moveItemsHotbarInvSmall(plugin, event.player, 1)
+          if (oldSlot != 4) {
+            if (oldSlot > 4) {
+              for (i in 0..min(scrLeft, maxMovesAtOnce) - 1) {
+                moveItemsHotbarInvSmall(plugin, event.player, 0)
+              }
+            } else {
+              for (i in 0..min(scrRight, maxMovesAtOnce) - 1) {
+                moveItemsHotbarInvSmall(plugin, event.player, 1)
+              }
             }
           }
-        }
-      }, 1)
+        }, 1)
+      }
     }
     return
   }
 
   @EventHandler
   fun onPlayerJoinEvent(event: PlayerJoinEvent) {
-    centerHotbar(plugin)
+    val mode = plugin.config.getString("mode")
+    if (mode == "center") {
+      centerHotbar(plugin)
+    }
   }
 }

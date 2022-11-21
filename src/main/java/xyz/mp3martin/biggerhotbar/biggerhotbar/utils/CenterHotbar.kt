@@ -6,7 +6,8 @@ import xyz.mp3martin.biggerhotbar.biggerhotbar.BiggerHotbar
 
 fun centerHotbar(plugin: BiggerHotbar) {
   val bhIsEnabled = plugin.config.getBoolean("bh_enabled")
-  if (bhIsEnabled) {
+  val mode = plugin.config.getString("mode")
+  if (bhIsEnabled && mode == "center") {
     for (player in getOnlinePlayers()) {
       if(player.hasPermission("biggerhotbar.hotbar")) {
         if (player.inventory.heldItemSlot != 4) {
