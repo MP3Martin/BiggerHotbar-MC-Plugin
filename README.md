@@ -42,3 +42,4 @@ This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
 
 ## Todo
 * Remove restriction to run commands only as player
+* Add preview for both modes in readme
