@@ -42,4 +42,3 @@ This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
 
 ## Todo
 - [ ] Add preview for both modes in readme
-- [ ] Optimise https://github.com/MP3Martin/BiggerHotbar-MC-Plugin/blob/main/src/main/java/xyz/mp3martin/biggerhotbar/biggerhotbar/EventListener.kt#L41
