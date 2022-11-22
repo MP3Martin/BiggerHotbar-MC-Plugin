@@ -38,14 +38,20 @@ class EventListener(plugin: BiggerHotbar) : Listener {
         scheduleSyncDelayedTask(plugin, {
           val newSlot = event.player.inventory.heldItemSlot
 //          event.player.sendMessage("$oldSlot + $newSlot")
-          val moveLeftOldSlot = (oldSlot == 6 || oldSlot == 7 || oldSlot == 8)
-          val moveRightOldSlot = (oldSlot == 0 || oldSlot == 1 || oldSlot == 2)
-          if ((moveLeftOldSlot && (newSlot == 0 || newSlot == 1 || newSlot == 2)) || (oldSlot == 7 && newSlot == 8) || (oldSlot == 6 && newSlot == 7) || (oldSlot == 6 && newSlot == 8)) {
-            event.player.inventory.heldItemSlot = 6
-            moveItemsHotbarInvSmall(plugin, event.player, 0)
-          } else if ((moveRightOldSlot && (newSlot == 8 || newSlot == 7 || newSlot == 6)) || (oldSlot == 1 && newSlot == 0) || (oldSlot == 2 && newSlot == 1) || (oldSlot == 2 && newSlot == 0)) {
-            event.player.inventory.heldItemSlot = 2
-            moveItemsHotbarInvSmall(plugin, event.player, 1)
+          if (oldSlot != newSlot) {
+            val moveLeftOldSlot = (oldSlot == 6 || oldSlot == 7 || oldSlot == 8)
+            val moveRightOldSlot = (oldSlot == 0 || oldSlot == 1 || oldSlot == 2)
+
+            val moveLeftNewSlot = (newSlot == 0 || newSlot == 1 || newSlot == 2)
+            val moveRightNewSlot = (newSlot == 8 || newSlot == 7 || newSlot == 6)
+
+            if ((moveLeftOldSlot && moveLeftNewSlot) || ((oldSlot == 6 || oldSlot == 7) && (newSlot == 7 || newSlot == 8))) {
+              event.player.inventory.heldItemSlot = 6
+              moveItemsHotbarInvSmall(plugin, event.player, 0)
+            } else if ((moveRightOldSlot && moveRightNewSlot) || ((oldSlot == 1 || oldSlot == 2) && (newSlot == 0 || newSlot == 1))) {
+              event.player.inventory.heldItemSlot = 2
+              moveItemsHotbarInvSmall(plugin, event.player, 1)
+            }
           }
         }, 1)
       } else {
