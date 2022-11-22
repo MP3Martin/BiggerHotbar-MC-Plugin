@@ -38,10 +38,11 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
   }
   override fun onCommand(sender: CommandSender, command: Command, label: String, sysargs: Array<out String>): Boolean {
     var args = sysargs
-    if (sender is Player) {
+    if (true) {
       if (sender.hasPermission("biggerhotbar.commands")) {
         // --------- \\
-        val p: Player = sender
+        
+        val p = sender
 
         try {
           args[0]
