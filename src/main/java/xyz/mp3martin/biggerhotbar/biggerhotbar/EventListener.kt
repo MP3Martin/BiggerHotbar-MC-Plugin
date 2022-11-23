@@ -39,11 +39,11 @@ class EventListener(plugin: BiggerHotbar) : Listener {
           val newSlot = event.player.inventory.heldItemSlot
 //          event.player.sendMessage("$oldSlot + $newSlot")
           if (oldSlot != newSlot) {
-            val moveLeftOldSlot = (oldSlot == 6 || oldSlot == 7 || oldSlot == 8)
-            val moveRightOldSlot = (oldSlot == 0 || oldSlot == 1 || oldSlot == 2)
+            val moveLeftOldSlot = (oldSlot in 6..8)
+            val moveRightOldSlot = (oldSlot in 0..2)
 
-            val moveLeftNewSlot = (newSlot == 0 || newSlot == 1 || newSlot == 2)
-            val moveRightNewSlot = (newSlot == 8 || newSlot == 7 || newSlot == 6)
+            val moveLeftNewSlot = (newSlot in 0..2)
+            val moveRightNewSlot = (newSlot in 6..8)
 
             if ((moveLeftOldSlot && moveLeftNewSlot) || ((oldSlot == 6 || oldSlot == 7) && (newSlot == 7 || newSlot == 8))) {
               event.player.inventory.heldItemSlot = 6
