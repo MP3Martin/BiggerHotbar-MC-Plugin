@@ -45,10 +45,10 @@ class EventListener(plugin: BiggerHotbar) : Listener {
             val moveLeftNewSlot = (newSlot in 0..2)
             val moveRightNewSlot = (newSlot in 6..8)
 
-            if ((moveLeftOldSlot && moveLeftNewSlot) || ((oldSlot == 6 || oldSlot == 7) && (newSlot == 7 || newSlot == 8))) {
+            if ((moveLeftOldSlot && moveLeftNewSlot) || ((oldSlot in 6..7) && (newSlot in 7..8))) {
               event.player.inventory.heldItemSlot = 6
               moveItemsHotbarInvSmall(plugin, event.player, 0)
-            } else if ((moveRightOldSlot && moveRightNewSlot) || ((oldSlot == 1 || oldSlot == 2) && (newSlot == 0 || newSlot == 1))) {
+            } else if ((moveRightOldSlot && moveRightNewSlot) || ((oldSlot in 1..2) && (newSlot in 0..1))) {
               event.player.inventory.heldItemSlot = 2
               moveItemsHotbarInvSmall(plugin, event.player, 1)
             }
