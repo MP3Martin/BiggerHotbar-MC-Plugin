@@ -12,9 +12,9 @@ This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
 
 ## Permissions
 * `biggerhotbar.hotbar`
-  * Enables bigger hotbar <br><br>
+  * Allows bigger hotbar for the player <br><br>
 * `biggerhotbar.commands`
-  * Enables using BiggerHotbar's commands
+  * Allows using BiggerHotbar's commands
   
 > **Note**: Being OP allows you all of the above
 
