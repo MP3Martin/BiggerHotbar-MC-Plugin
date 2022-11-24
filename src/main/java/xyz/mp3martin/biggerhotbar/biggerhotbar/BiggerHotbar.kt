@@ -10,9 +10,11 @@ class BiggerHotbar : JavaPlugin() {
     getCommand("biggerhotbar")!!.executor = BiggerhotbarCommand(this)
     this.server.pluginManager.registerEvents(EventListener(this), this)
 
-    config.addDefault("bh_enabled", false)
-    config.addDefault("maxMovesAtOnce", 4)
-    config.addDefault("mode", "center")
+    val configItemsMap = mapOf("bh_enabled" to false, "maxMovesAtOnce" to 4, "mode" to "center")
+    configItemsMap.forEach { entry ->
+      config.addDefault(entry.key, entry.value)
+    }
+
     config.options().copyDefaults(true)
     saveConfig()
 
