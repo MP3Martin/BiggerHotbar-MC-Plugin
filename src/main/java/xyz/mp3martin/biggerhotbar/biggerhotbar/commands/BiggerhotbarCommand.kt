@@ -111,7 +111,6 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
 
           "reload" -> {
             val success = try {
-              //TODO: test if the line below gets ran
               plugin.reloadConfig()
               1
             } catch (e: Throwable) {
