@@ -42,3 +42,4 @@ This plugin should be on **1.12** - **∞**
 
 ## Todo
 - [ ] Add preview for both modes in readme
+- [ ] Add update checking
