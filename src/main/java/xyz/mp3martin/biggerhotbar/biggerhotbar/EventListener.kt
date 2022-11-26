@@ -57,12 +57,12 @@ class EventListener(plugin: BiggerHotbar) : Listener {
       } else {
         // - Mode is center -
         scheduleSyncDelayedTask(plugin, {
-          val oldSlot = event.player.inventory.heldItemSlot
+          val oldSlot: Int = event.player.inventory.heldItemSlot
 
           event.player.inventory.heldItemSlot = 4
 
-          val scrLeft = oldSlot - 4
-          val scrRight = 4 - oldSlot
+          val scrLeft: Int = oldSlot - 4
+          val scrRight: Int = 4 - oldSlot
 
           if (oldSlot != 4) {
             if (oldSlot > 4) {
