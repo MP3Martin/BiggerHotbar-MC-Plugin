@@ -34,6 +34,18 @@ This plugin should be on **1.12** - **∞**
   
 > **Note**: Reload config using `/bh reload`
 
+## Modes
+* `center`
+
+https://user-images.githubusercontent.com/60501493/204097547-6d893e00-39f5-4644-b8ab-40d05b20143e.mp4
+
+
+* `sides`
+
+https://user-images.githubusercontent.com/60501493/204097556-5938c4fe-6695-406a-85e7-175e5c45582b.mp4
+
+
+
 <br><br>
 
 ---
@@ -41,5 +53,4 @@ This plugin should be on **1.12** - **∞**
 <br>
 
 ## Todo
-- [ ] Add preview for both modes in readme
-- [ ] Add update checking
+- [x] Nothing
