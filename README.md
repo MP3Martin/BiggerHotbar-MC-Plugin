@@ -35,18 +35,25 @@ This plugin should be on **1.12** - **∞**
 > **Note**: Reload config using `/bh reload`
 
 ## Modes
-* `center`
 
-https://user-images.githubusercontent.com/60501493/204097547-6d893e00-39f5-4644-b8ab-40d05b20143e.mp4
+Click a mode name to see a showcase video:
+
+<details>
+  <summary><b>Center</b></summary>
+  
+  https://user-images.githubusercontent.com/60501493/204097547-6d893e00-39f5-4644-b8ab-40d05b20143e.mp4
+  
+</details>
 
 
-* `sides`
+<details>
+  <summary><b>Sides</b></summary>
+  
+  https://user-images.githubusercontent.com/60501493/204097556-5938c4fe-6695-406a-85e7-175e5c45582b.mp4
+  
+</details>
 
-https://user-images.githubusercontent.com/60501493/204097556-5938c4fe-6695-406a-85e7-175e5c45582b.mp4
-
-
-
-<br><br>
+<br>
 
 ---
 
