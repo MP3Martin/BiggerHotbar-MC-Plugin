@@ -8,7 +8,7 @@ Minecraft plugin that makes your hotbar bigger (using scrolling)
 * Type `/bh enable` to enable the plugin
 
 ## Version
-This plugin should be on **1.12** - **∞**, *but it was tested only on 1.14.4*
+This plugin should be on **1.12** - **∞**
 
 ## Permissions
 * `biggerhotbar.hotbar`
