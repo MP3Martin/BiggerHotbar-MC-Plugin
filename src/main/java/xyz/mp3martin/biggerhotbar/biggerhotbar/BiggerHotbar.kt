@@ -1,7 +1,11 @@
 package xyz.mp3martin.biggerhotbar.biggerhotbar
 
+
 import org.bukkit.plugin.java.JavaPlugin
 import xyz.mp3martin.biggerhotbar.biggerhotbar.commands.BiggerhotbarCommand
+import xyz.mp3martin.biggerhotbar.biggerhotbar.updatechecker.UpdateCheckSource
+import xyz.mp3martin.biggerhotbar.biggerhotbar.updatechecker.UpdateChecker
+
 
 class BiggerHotbar : JavaPlugin() {
   override fun onEnable() {
@@ -24,6 +28,11 @@ class BiggerHotbar : JavaPlugin() {
     saveConfig()
 
 //    everyTick(this)
+
+    UpdateChecker(this, UpdateCheckSource.GITHUB_RELEASE_TAG, "MP3Martin/BiggerHotbar-MC-Plugin")
+      .setDownloadLink("https://github.com/MP3Martin/BiggerHotbar-MC-Plugin/releases/latest/")
+      .setNotifyOpsOnJoin(true)
+      .checkNow()
   }
 
   override fun onDisable() {
