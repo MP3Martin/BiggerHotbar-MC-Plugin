@@ -158,10 +158,14 @@ class BiggerhotbarCommand(plugin: BiggerHotbar) : TabExecutor {
         }
 
         2 -> {
-          if (args[0] == "mode") {
-            mutableListOf("center", "sides")
-          } else {
-            null
+          when (args[0]) {
+            "mode" -> {
+              mutableListOf("center", "sides")
+            }
+
+            else -> {
+              null
+            }
           }
         }
 
