@@ -6,10 +6,10 @@
 
     <groupId>xyz.mp3martin.biggerhotbar</groupId>
     <artifactId>BiggerHotbar</artifactId>
-    <version>0.0.3</version>
+    <version>0.0.4</version>
     <packaging>jar</packaging>
 
-    <name>BiggerHotbar</name>
+    <name>BiggerHotbar-MC-Plugin</name>
 
     <description>Makes you hotbar bigger using scrolling</description>
     <properties>

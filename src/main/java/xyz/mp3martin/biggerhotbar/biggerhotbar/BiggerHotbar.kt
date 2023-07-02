@@ -13,6 +13,7 @@ class BiggerHotbar : JavaPlugin() {
     logger.info("BiggerHotbar is working!")
     getCommand("biggerhotbar")!!.executor = BiggerhotbarCommand(this)
     this.server.pluginManager.registerEvents(EventListener(this), this)
+    var metrics: MetricsLite = MetricsLite(this, 18959)
 
     // Config setup
     val configItemsMap = mapOf(
