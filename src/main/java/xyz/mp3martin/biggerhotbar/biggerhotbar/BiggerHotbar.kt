@@ -1,10 +1,9 @@
 package xyz.mp3martin.biggerhotbar.biggerhotbar
 
-
+import com.jeff_media.updatechecker.UpdateCheckSource
+import com.jeff_media.updatechecker.UpdateChecker
 import org.bukkit.plugin.java.JavaPlugin
 import xyz.mp3martin.biggerhotbar.biggerhotbar.commands.BiggerhotbarCommand
-import xyz.mp3martin.biggerhotbar.biggerhotbar.updatechecker.UpdateCheckSource
-import xyz.mp3martin.biggerhotbar.biggerhotbar.updatechecker.UpdateChecker
 
 
 class BiggerHotbar : JavaPlugin() {
@@ -13,13 +12,14 @@ class BiggerHotbar : JavaPlugin() {
     logger.info("BiggerHotbar is working!")
     getCommand("biggerhotbar")!!.executor = BiggerhotbarCommand(this)
     this.server.pluginManager.registerEvents(EventListener(this), this)
-    var metrics: MetricsLite = MetricsLite(this, 18959)
+    MetricsLite(this, 18959)
 
     // Config setup
     val configItemsMap = mapOf(
       "bh_enabled" to false,
       "maxMovesAtOnce" to 4,
-      "mode" to "center")
+      "mode" to "center"
+    )
 
     configItemsMap.forEach { entry ->
       config.addDefault(entry.key, entry.value)

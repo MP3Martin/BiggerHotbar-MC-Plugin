@@ -2,7 +2,6 @@ package xyz.mp3martin.biggerhotbar.biggerhotbar
 
 import org.bukkit.event.EventHandler
 import org.bukkit.event.Listener
-import org.bukkit.event.block.BlockPlaceEvent
 import org.bukkit.event.player.PlayerItemHeldEvent
 import org.bukkit.event.player.PlayerJoinEvent
 import xyz.mp3martin.biggerhotbar.biggerhotbar.utils.centerHotbar
@@ -19,11 +18,6 @@ class EventListener(plugin: BiggerHotbar) : Listener {
   }
 
   @EventHandler
-  fun onBlockPlaceEvent(event: BlockPlaceEvent) {
-    return
-  }
-
-  @EventHandler
   fun onPlayerItemHeldEvent(event: PlayerItemHeldEvent) {
     val oldSlot = event.player.inventory.heldItemSlot
     val bhIsEnabled = plugin.config.getBoolean("bh_enabled")
@@ -37,7 +31,6 @@ class EventListener(plugin: BiggerHotbar) : Listener {
         // - Mode is sides -
         scheduleSyncDelayedTask(plugin, {
           val newSlot = event.player.inventory.heldItemSlot
-//          event.player.sendMessage("$oldSlot + $newSlot")
           if (oldSlot != newSlot) {
             val moveLeftOldSlot = (oldSlot in 6..8)
             val moveRightOldSlot = (oldSlot in 0..2)
@@ -47,10 +40,10 @@ class EventListener(plugin: BiggerHotbar) : Listener {
 
             if ((moveLeftOldSlot && moveLeftNewSlot) || ((oldSlot in 6..7) && (newSlot in 7..8))) {
               event.player.inventory.heldItemSlot = 6
-              moveItemsHotbarInvSmall(plugin, event.player, 0)
+              moveItemsHotbarInvSmall(event.player, 0)
             } else if ((moveRightOldSlot && moveRightNewSlot) || ((oldSlot in 1..2) && (newSlot in 0..1))) {
               event.player.inventory.heldItemSlot = 2
-              moveItemsHotbarInvSmall(plugin, event.player, 1)
+              moveItemsHotbarInvSmall(event.player, 1)
             }
           }
         }, 1)
@@ -66,12 +59,12 @@ class EventListener(plugin: BiggerHotbar) : Listener {
 
           if (oldSlot != 4) {
             if (oldSlot > 4) {
-              for (i in 0..min(scrLeft, maxMovesAtOnce) - 1) {
-                moveItemsHotbarInvSmall(plugin, event.player, 0)
+              for (i in 0 until min(scrLeft, maxMovesAtOnce)) {
+                moveItemsHotbarInvSmall(event.player, 0)
               }
             } else {
-              for (i in 0..min(scrRight, maxMovesAtOnce) - 1) {
-                moveItemsHotbarInvSmall(plugin, event.player, 1)
+              for (i in 0 until min(scrRight, maxMovesAtOnce)) {
+                moveItemsHotbarInvSmall(event.player, 1)
               }
             }
           }

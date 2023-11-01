@@ -1,13 +1,16 @@
 name: BiggerHotbar
+author: MP3Martin
+website: https://github.com/MP3Martin/BiggerHotbar-MC-Plugin
 version: '${project.version}'
 main: xyz.mp3martin.biggerhotbar.biggerhotbar.BiggerHotbar
 permissions:
   biggerhotbar.hotbar:
     description: Enables bigger hotbar
+    default: true
   biggerhotbar.commands:
-    description: Enables using BiggerHotbar's commands
+    description: Allows using BiggerHotbar's commands
 commands:
   biggerhotbar:
-    aliases: [bh, bhotbar, biggerh]
+    aliases: [ bh, bhotbar, biggerh ]
     description: Control bigger hotbar plugin
     usage: /<command> <enable | disable | toggle | status | mode [center | sides] | reload | version>

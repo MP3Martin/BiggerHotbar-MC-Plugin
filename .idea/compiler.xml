@@ -9,8 +9,5 @@
         <module name="BiggerHotbar-MC-Plugin" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="BiggerHotbar-MC-Plugin" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
